@@ -19,6 +19,7 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -28,6 +29,20 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>log4jRefreshInterval</param-name>
+        <param-value>6000</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
 
     <!-- Spring监听器 -->
     <listener>

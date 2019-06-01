@@ -10,8 +10,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" src="webjars/jquery/3.2.1/dist/jquery.min.js"></script>
+    <script src="webjars/jquery/3.2.1/dist/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<%--    <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.min.css">--%>
     <style>
         video{
             position: fixed;
@@ -32,15 +33,9 @@
     <video autoplay loop muted>
         <source src="video/back_index.mp4" type="video/mp4" />
     </video>
-    <h1>wojiaolijinyu 我叫李金玉</h1>
-    <form action="user/login">
-        First name:<br>
-        <input type="text" name="firstname" value="Mickey">
-        <br>
-        Last name:<br>
-        <input type="text" name="lastname" value="Mouse">
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <input type="text" class="form-control" placeholder="twitterhandle">
+    </div>
 </body>
 </html>
