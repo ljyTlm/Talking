@@ -19,8 +19,8 @@ public class LoginAction extends BaseAction{
     @RequestMapping("/login.do")
     @ResponseBody String login(HttpServletRequest rq){
         String username = getParm(rq, "username", String.class);
-        String password = getParm(rq, "username", String.class);
+        String password = getParm(rq, "password", String.class);
         System.out.println(username+"  "+password);
-        return loginService.login();
+        return loginService.login(username, password);
     }
 }

@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Select;
 public interface LoginDao {
 
     User getUserById(@Param("id") int id);
+
+    User getUserByName(@Param("username") String username);
 }

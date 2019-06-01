@@ -13,6 +13,8 @@ public class User {
 
     Integer vip;
 
+    String password;
+
     public Integer getId() {
         return id;
     }
@@ -59,6 +61,14 @@ public class User {
 
     public void setVip(Integer vip) {
         this.vip = vip;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

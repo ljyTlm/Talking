@@ -36,10 +36,10 @@
             <div class="modal-content">
                 <div class="modal-header blue">
                     登录
-                </div>
+                </div>password
                 <div class="modal-body">
                     <input id="login_username" type="text" class="form-control" placeholder="请输入用户名"  />
-                    <input id="login_passwd" type="password" class="form-control" placeholder="请输入密码" />
+                    <input id="login_password" type="password" class="form-control" placeholder="请输入密码" />
                 </div>
                 <div class="modal-footer">
                     <div class="form-control text-center" onclick="login()">登录</div>
