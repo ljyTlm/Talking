@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,7 +21,6 @@ public class LoginAction extends BaseAction{
     @ResponseBody String login(HttpServletRequest rq){
         String username = getParm(rq, "username", String.class);
         String password = getParm(rq, "password", String.class);
-        System.out.println(username+"  "+password);
         return loginService.login(username, password);
     }
 }
