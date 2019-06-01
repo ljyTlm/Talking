@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
     @Override
     public String login() {
-        return "home";
+        return "success";
     }
 }
