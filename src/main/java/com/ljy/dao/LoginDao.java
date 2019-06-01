@@ -1,5 +1,10 @@
 package com.ljy.dao;
 
+import com.ljy.entity.User;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 public interface LoginDao {
-    String login();
+
+    User getUserById(@Param("id") int id);
 }

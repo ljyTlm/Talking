@@ -60,4 +60,9 @@ public class User {
     public void setVip(Integer vip) {
         this.vip = vip;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

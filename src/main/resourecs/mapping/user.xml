@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+namespace:命名空间，对sql语句进行分类化管理，隔离
+paramterType:参数类型  java类型  pojo（保存的时候）
+resultType:结果类型  数据库的字段名必须和实体类的属性名一致
+#{id}：一个占位符
+-->
+<mapper namespace="com.ljy.dao.LoginDao">
+    <!--
+    id:标识配置文件中唯一的sql    一般称为statement的id
+    -->
+    <select id="getUserById" parameterType="int" resultType="com.ljy.entity.User">
+      SELECT * FROM USER WHERE id=#{id}
+    </select>
+
+</mapper>
+
