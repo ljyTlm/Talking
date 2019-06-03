@@ -1,9 +1,9 @@
-package com.ljy.entity;
+package com.ljy.entities;
 
-public class User {
+public class UserEntity {
     Integer id;
 
-    String name;
+    String username;
 
     String sign;
 
@@ -23,12 +23,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSign() {
@@ -73,6 +73,6 @@ public class User {
 
     @Override
     public String toString() {
-        return name;
+        return username;
     }
 }

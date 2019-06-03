@@ -1,7 +1,7 @@
 package com.ljy.serviceImpl;
 
-import com.ljy.dao.LoginDao;
-import com.ljy.entity.User;
+import com.ljy.dao.UserDao;
+import com.ljy.entities.UserEntity;
 import com.ljy.service.LoginService;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +11,13 @@ import javax.annotation.Resource;
 public class LoginServiceImpl implements LoginService {
 
     @Resource
-    LoginDao loginDao;
+    UserDao userDao;
 
     @Override
     public String login(String username, String password) {
-        //return loginDao.login();
-        User user = loginDao.getUserByName(username);
-        if (user == null || !user.getPassword().equals(password)){
+        //return userDao.login();
+        UserEntity userEntity = userDao.getUserByName(username);
+        if (userEntity == null || !userEntity.getPassword().equals(password)){
             return "login fail";
         }
         return "success";
