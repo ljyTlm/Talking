@@ -6,7 +6,7 @@ function login() {
         {username:username, password:password},
         function (data) {
             if (data == "success"){
-                $(window).attr('location','html/home.jsp');
+                $(window).attr('location','html/home.html');
             }else {
                 alert("用户名或密码错误！");
             }

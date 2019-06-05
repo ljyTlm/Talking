@@ -25,6 +25,7 @@
 
     <import resource="classpath:spring-mybatis.xml" />
 
+<!-- 这个session暂时整合不进来 先注释掉 -->
 <!--    <import resource="classpath:spring-session.xml" />-->
 
 </beans>
