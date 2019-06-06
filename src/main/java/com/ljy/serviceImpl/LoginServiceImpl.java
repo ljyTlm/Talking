@@ -30,8 +30,12 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public void insertUser(UserEntity user) {
-        System.out.println(user);
-        userDao.insertUser(user);
+    public String insertUser(UserEntity user) {
+        UserEntity oldUser = userDao.getUserByName(user.getUsername());
+        if (oldUser == null){
+            userDao.insertUser(user);
+            return LogicConstant.SUCCESS;
+        }
+        return LogicConstant.FAIL;
     }
 }

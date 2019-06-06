@@ -7,5 +7,5 @@ public interface LoginService {
 
     UserEntity getUserByName(String username);
 
-    void insertUser(UserEntity user);
+    String insertUser(UserEntity user);
 }

@@ -75,6 +75,11 @@
         <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
 
+    <!-- 监听session的创建和销毁 -->
+    <listener>
+        <listener-class>com.ljy.listener.SessionListener</listener-class>
+    </listener>
+
     <!-- 配置SESSION超时，单位是分钟 -->
     <session-config>
         <session-timeout>15</session-timeout>

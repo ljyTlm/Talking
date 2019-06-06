@@ -13,6 +13,7 @@ import sun.rmi.runtime.Log;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 
 @Controller
@@ -35,12 +36,7 @@ public class LoginAction extends BaseAction{
 
     @RequestMapping("/register.do")
     @ResponseBody String register(HttpServletRequest rq, HttpServletResponse rp){
-        UserEntity user_new = JSON.parseObject(getParm(rq, "user").toString(), UserEntity.class);
-        UserEntity user = loginService.getUserByName(user_new.getUsername());
-        if (user == null){
-            loginService.insertUser(user_new);
-            return LogicConstant.SUCCESS;
-        }
-        return LogicConstant.FAIL;
+        UserEntity user = JSON.parseObject(getParm(rq, "user").toString(), UserEntity.class);
+        return loginService.insertUser(user);
     }
 }
