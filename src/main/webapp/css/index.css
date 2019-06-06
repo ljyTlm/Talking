@@ -11,3 +11,6 @@ video{
     /*filter:grayscale(100%); //背景灰度设置*/
     z-index:-11
 }
+input{
+    margin: 10px;
+}

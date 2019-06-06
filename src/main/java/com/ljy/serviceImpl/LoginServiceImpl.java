@@ -23,4 +23,15 @@ public class LoginServiceImpl implements LoginService {
         }
         return LogicConstant.SUCCESS;
     }
+
+    @Override
+    public UserEntity getUserByName(String username) {
+        return userDao.getUserByName(username);
+    }
+
+    @Override
+    public void insertUser(UserEntity user) {
+        System.out.println(user);
+        userDao.insertUser(user);
+    }
 }

@@ -21,5 +21,10 @@ resultType:结果类型  数据库的字段名必须和实体类的属性名一�
       SELECT * FROM USER WHERE username=#{username}
     </select>
 
+    <insert id="insertUser" parameterType="com.ljy.entities.UserEntity">
+        INSERT INTO `user`(`username`,`password`,`sign`,`phoneNumber`,`email`)
+                    VALUES(#{username},#{password},#{sign},#{phoneNumber},#{email})
+    </insert>
+
 </mapper>
 

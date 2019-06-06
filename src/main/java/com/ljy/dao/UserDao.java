@@ -8,4 +8,6 @@ public interface UserDao {
     UserEntity getUserById(@Param("id") int id);
 
     UserEntity getUserByName(@Param("username") String username);
+
+    void insertUser(UserEntity userEntity);
 }

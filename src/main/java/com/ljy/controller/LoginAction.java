@@ -1,6 +1,8 @@
 package com.ljy.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.ljy.constant.LogicConstant;
+import com.ljy.entities.UserEntity;
 import com.ljy.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,5 +31,16 @@ public class LoginAction extends BaseAction{
             setSession(rq, "username", username);
         }
         return result;
+    }
+
+    @RequestMapping("/register.do")
+    @ResponseBody String register(HttpServletRequest rq, HttpServletResponse rp){
+        UserEntity user_new = JSON.parseObject(getParm(rq, "user").toString(), UserEntity.class);
+        UserEntity user = loginService.getUserByName(user_new.getUsername());
+        if (user == null){
+            loginService.insertUser(user_new);
+            return LogicConstant.SUCCESS;
+        }
+        return LogicConstant.FAIL;
     }
 }
