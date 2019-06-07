@@ -19,11 +19,20 @@ video{
     /*filter:grayscale(100%); //背景灰度设置*/
     z-index:-11
 }
-.back-discolor{
-    background-color:rgba(0,0,0,0);
+.back-discolor2{
+    background-color:rgba(255,255,255,0.2);
 }
-.back-halfcolor{
-    opacity: 0.7;
+.back-discolor1{
+    background-color:rgba(255,255,255,0.1);
+}
+.back-discolor4{
+    background-color:rgba(255,255,255,0.4);
+}
+.back-discolor5{
+    background-color:rgba(255,255,255,0.5);
+}
+.back-discolor8{
+    background-color:rgba(255,255,255,0.8);
 }
 .text-scroll{
     overflow-x:hidden;overflow-y:auto;

@@ -23,10 +23,10 @@ function getUserInfo(e) {
  * @returns {string}
  */
 function getTalkingModel(model){
-    var html = "<div id='talk_"+model.id+"' class='panel panel-success'>";
-            html += "<div class='panel-heading'>"+model.name+"</div>";
+    var html = "<div id='talk_"+model.id+"' class='panel panel-success back-discolor1'>";
+            html += "<div class='panel-heading '>"+model.name+"</div>";
             html += "<div class='panel-body'>"+model.text+"</div>";
-            html += "<div class='panel-footer'>时间:"+model.time+" id:"+model.ip
+            html += "<div class='panel-footer back-discolor8'>时间:"+model.time+" id:"+model.ip
                 html += "<div style='float: right'>";
                     if (model.name == "我"){
                         html += "<button type='button' class='text-danger btn btn-warning ' onclick='removeTalking("+model.id+")'><span style='color: black'>撤回</span></button>";
