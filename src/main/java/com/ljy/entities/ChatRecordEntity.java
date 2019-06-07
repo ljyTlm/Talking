@@ -1,16 +1,18 @@
 package com.ljy.entities;
 
+import java.sql.Timestamp;
+
 public class ChatRecordEntity {
 
     Integer id;
 
-    String time;
+    Timestamp time;
 
     String ip;
 
     String text;
 
-    Integer user_id;
+    String username;
 
     public Integer getId() {
         return id;
@@ -20,11 +22,11 @@ public class ChatRecordEntity {
         this.id = id;
     }
 
-    public String getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
@@ -44,11 +46,11 @@ public class ChatRecordEntity {
         this.text = text;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

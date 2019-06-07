@@ -22,7 +22,7 @@ public class BaseAction {
         rq.getSession().setAttribute(key, value);
     }
 
-    public <T> T getSession(HttpServletRequest rq, String key, T value){
+    public <T> T getSession(HttpServletRequest rq, String key){
         return (T)rq.getSession().getAttribute(key);
     }
 

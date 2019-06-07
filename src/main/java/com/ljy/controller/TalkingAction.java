@@ -2,6 +2,7 @@ package com.ljy.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.ljy.entities.ChatRecordEntity;
 import com.ljy.entities.UserEntity;
 import com.ljy.service.TalkingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 @Controller
 @RequestMapping("TalkingAction")
-public class TalkingAction {
+public class TalkingAction extends BaseAction{
 
     @Autowired
     TalkingService talkingService;
@@ -26,7 +26,7 @@ public class TalkingAction {
     @Autowired
     ServletContext servletContext;
 
-    @RequestMapping(value = "getAllUserOnline.do", produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "getAllUserOnline.do")
     @ResponseBody String getAllUserOnline(HttpServletRequest request){
         List<UserEntity> users = new ArrayList<UserEntity>();
         List<HttpSession> list = (List<HttpSession>)servletContext.getAttribute("users");
@@ -39,6 +39,33 @@ public class TalkingAction {
             }
         }
         return JSON.toJSONString(users);
+    }
+
+    @RequestMapping(value = "getUserInfo.do")
+    @ResponseBody String getUserInfo(HttpServletRequest request){
+        String username = getParm(request, "username");
+        UserEntity user = talkingService.getUserInfo(username);
+        return JSON.toJSONString(user);
+    }
+
+    @RequestMapping(value = "removeTalking.do")
+    void removeTalking(HttpServletRequest request){
+        String username = getSession(request, "username");
+        String id = getParm(request, "id");
+        talkingService.removeTalking(Integer.parseInt(id), username);
+    }
+
+
+    @RequestMapping(value = "sendText.do")
+    @ResponseBody String sendText(HttpServletRequest request){
+        ChatRecordEntity chatRecordEntity = new ChatRecordEntity();
+        String text = getParm(request, "text");
+        chatRecordEntity.setText(text);
+        String ip = request.getRemoteAddr();
+        chatRecordEntity.setIp(ip);
+        String username = getSession(request, "username");
+        chatRecordEntity.setUsername(username);
+        return JSON.toJSONString(talkingService.insertChatRecord(chatRecordEntity));
     }
 
 }

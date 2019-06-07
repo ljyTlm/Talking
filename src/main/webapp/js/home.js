@@ -4,6 +4,12 @@
 function getUserOnline() {
     $.post("../TalkingAction/getAllUserOnline.do",
         function(data){
+            var list = JSON.parse(data);
+            var html = "";
+            for (var i = 0; i < list.length; i ++){
+                html += "<li><a onclick='getUserInfo(this)'>"+list[i].username+"</a></li>";
+            }
+            $("#userOnline").html(html);
             setTimeout("getUserOnline()", 60000);
         });
 }
@@ -14,7 +20,9 @@ function getUserOnline() {
  */
 function getUserInfo(e) {
     var username = $(e).text();
-    alert(username);
+    $.post("../TalkingAction/getUserInfo.do", {username:username}, function (user) {
+        alert("哈哈 先这么看吧\n"+user);
+    });
 }
 
 /**
@@ -54,28 +62,7 @@ function insertTalking(obj) {
  */
 function removeTalking(id) {
     $("#talk_"+id).remove();
-    $.post("../TalkingAction/removeTalking.do",{talkingId:id}, function () {
-
-    });
-}
-
-/**
- * 发送信息
- */
-function subText(){
-    var text = $("#editor").val();
-    if(!cheek.cheekString(text)){return;}
-
-    $.post("../TalkingAction/sendText.do", {text: text}, function (data) {
-        if (data == ""){
-            alert("登录过期！请重现登录");
-            $(window).attr("location", "../index.html");
-            return;
-        }
-        var jsonObj =  data.parseJSON();
-        jsonObj.name = "我";
-        insertTalking(jsonObj);
-    });
+    $.post("../TalkingAction/removeTalking.do",{id:id});
 }
 
 /**
@@ -87,6 +74,33 @@ function replaceText(e){
     $("#editor").val(text);
 }
 
-$(function () {
+/**
+ * 插入上一条发送过的信息 功能方便强大！
+ */
+function insertLastText(text) {
+    $("#lastText").text(text);
+}
 
+/**
+ * 发送信息
+ */
+function subText(){
+    var text = $("#editor").val();
+    if(!check.checkString(text)){return;}
+
+    $.post("../TalkingAction/sendText.do", {text: text}, function (data) {
+        if (data == ""){
+            alert("登录过期！请重现登录");
+            $(window).attr("location", "../index.html");
+            return;
+        }
+        var jsonObj =  JSON.parse(data);
+        jsonObj.name = "我";
+        insertTalking(jsonObj);
+        insertLastText(text);
+    });
+}
+
+$(function () {
+    getUserOnline();
 });

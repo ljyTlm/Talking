@@ -9,17 +9,26 @@ paramterType:参数类型  java类型  pojo（保存的时候）
 resultType:结果类型  数据库的字段名必须和实体类的属性名一致
 #{id}：一个占位符
 -->
-<mapper namespace="com.ljy.dao.UserDao">
+<mapper namespace="com.ljy.dao.ChatRecordDao">
     <!--
     id:标识配置文件中唯一的sql    一般称为statement的id
     -->
     <select id="getChatRecordById" parameterType="int" resultType="com.ljy.entities.ChatRecordEntity">
-      SELECT * FROM USER WHERE id=#{id}
+      SELECT * FROM chat_record WHERE id=#{id}
     </select>
 
     <select id="getChatRecordByUserId" parameterType="java.lang.String" resultType="com.ljy.entities.ChatRecordEntity">
-      SELECT * FROM USER WHERE userid=#{userid}
+      SELECT * FROM chat_record WHERE userid=#{userid}
     </select>
+
+    <delete id="removeChatRecordById" parameterType="int">
+      DELETE FROM chat_record WHERE id=#{id};
+    </delete>
+
+    <insert id="insertChatRecord" parameterType="com.ljy.entities.ChatRecordEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `chat_record`(`username`,`text`,`ip`)
+                           VALUES(#{username, jdbcType=VARCHAR},#{text, jdbcType=VARCHAR},#{ip, jdbcType=VARCHAR})
+    </insert>
 
 </mapper>
 

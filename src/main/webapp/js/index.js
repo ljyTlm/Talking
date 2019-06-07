@@ -17,19 +17,19 @@ function register() {
 
     console.log("注册");
     var username = $("#register_username").val();
-    if(!cheek.cheekUsername(username)) return;
+    if(!check.checkUsername(username)) return;
 
     var password_1 = $("#register_password_1").val();
     var password_2 = $("#register_password_2").val();
 
     var sign = $("#register_sign").val();
-    if(!cheek.cheekString(sign, 1)) return;
+    if(!check.checkString(sign, 1)) return;
 
     var email = $("#register_email").val();
-    if(!cheek.cheekEmail(email)) return;
+    if(!check.checkEmail(email)) return;
 
     var phone = $("#register_phone").val();
-    if(!cheek.cheekPhone(phone)) return;
+    if(!check.checkPhone(phone)) return;
 
     if (password_1 != password_2){
         alert("请重新输入密码");
