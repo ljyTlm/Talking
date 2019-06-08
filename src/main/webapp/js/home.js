@@ -32,7 +32,7 @@ function getUserInfo(e) {
  */
 function getTalkingModel(model){
     var html = "<div id='talk_"+model.id+"' class='panel panel-success back-discolor1'>";
-            html += "<div class='panel-heading '>"+model.name+"</div>";
+            html += "<div class='panel-heading '>"+model.username+"</div>";
             html += "<div class='panel-body'>"+model.text+"</div>";
             html += "<div class='panel-footer back-discolor8'>时间:"+model.time+" id:"+model.ip
                 html += "<div style='float: right'>";
@@ -54,6 +54,42 @@ function getTalkingModel(model){
  */
 function insertTalking(obj) {
     $("#talkList").append(getTalkingModel(obj));
+}
+
+/**
+ * 刷新聊天记录
+ */
+function refreshTalking() {
+    $.post("../TalkingAction/refreshTalking.do", function (data) {
+        var list = JSON.parse(data);
+        var map = [];
+        for(var i = 0; i < list.length; i ++){
+            map["talk_"+list[i].id] = 1;
+        }
+        var talk = $("div[id^='talk_']");
+        var removeIdList = [];
+        for(var i = 0; i < talk.length; i ++){
+            var id = $(talk[i]).attr("id");
+            if(map[id] != 1){
+                removeIdList.push(id);
+            }
+        }
+        for(var i = 0; i < removeIdList.length; i ++){
+            $("#"+removeIdList[i]).remove();
+        }
+        map = [];
+        talk = $("div[id^='talk_']");
+        for(var i = 0; i < talk.length; i ++){
+            var id = $(talk[i]).attr("id");
+            map[id] = 1;
+        }
+        for(var i = 0; i < list.length; i ++){
+            if(map["talk_"+list[i].id] != 1){
+                insertTalking(list[i]);
+            }
+        }
+        setTimeout("refreshTalking()", 500);
+    });
 }
 
 /**
@@ -103,4 +139,5 @@ function subText(){
 
 $(function () {
     getUserOnline();
+    refreshTalking();
 });

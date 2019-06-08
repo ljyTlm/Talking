@@ -8,6 +8,8 @@ import com.ljy.service.TalkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service(value = "TalkingService")
 public class TalkingServiceImpl implements TalkingService {
 
@@ -36,5 +38,10 @@ public class TalkingServiceImpl implements TalkingService {
     public ChatRecordEntity insertChatRecord(ChatRecordEntity chatRecordEntity) {
         chatRecordDao.insertChatRecord(chatRecordEntity);
         return chatRecordDao.getChatRecordById(chatRecordEntity.getId());
+    }
+
+    @Override
+    public List<ChatRecordEntity> getChatRecordList(int num) {
+        return chatRecordDao.getChatRecordList(num);
     }
 }

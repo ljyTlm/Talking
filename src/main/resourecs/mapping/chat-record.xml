@@ -30,5 +30,9 @@ resultType:结果类型  数据库的字段名必须和实体类的属性名一�
                            VALUES(#{username, jdbcType=VARCHAR},#{text, jdbcType=VARCHAR},#{ip, jdbcType=VARCHAR})
     </insert>
 
+    <select id="getChatRecordList" parameterType="int" resultType="com.ljy.entities.ChatRecordEntity">
+        SELECT * FROM `chat_record` ORDER BY `time` DESC LIMIT #{num};
+    </select>
+
 </mapper>
 

@@ -68,4 +68,9 @@ public class TalkingAction extends BaseAction{
         return JSON.toJSONString(talkingService.insertChatRecord(chatRecordEntity));
     }
 
+    @RequestMapping(value = "refreshTalking.do")
+    @ResponseBody String refreshTalking(HttpServletRequest request){
+        List<ChatRecordEntity> list = talkingService.getChatRecordList(50);
+        return JSON.toJSONString(list);
+    }
 }

@@ -14,4 +14,6 @@ public interface ChatRecordDao {
     void removeChatRecordById(@Param("id") Integer id);
 
     int insertChatRecord(ChatRecordEntity chatRecordEntity);
+
+    List<ChatRecordEntity> getChatRecordList(@Param("num") int num);
 }
