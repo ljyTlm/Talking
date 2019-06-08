@@ -134,6 +134,7 @@ function subText(){
         jsonObj.name = "我";
         insertTalking(jsonObj);
         insertLastText(text);
+        $('#talkList').scrollTop(999999);
     });
 }
 
