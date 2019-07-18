@@ -26,5 +26,12 @@ resultType:结果类型  数据库的字段名必须和实体类的属性名一�
                     VALUES(#{username},#{password},#{sign},#{phoneNumber},#{email})
     </insert>
 
+    <update id="updateSign">
+        UPDATE `user`
+                SET `sign` = #{sign}
+                    WHERE username=#{username}
+    </update>
+
+
 </mapper>
 

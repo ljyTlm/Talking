@@ -13,4 +13,6 @@ public interface TalkingService {
     ChatRecordEntity insertChatRecord(ChatRecordEntity chatRecordEntity);
 
     List<ChatRecordEntity> getChatRecordList(int num);
+
+    void updateSign(String username, String sign);
 }

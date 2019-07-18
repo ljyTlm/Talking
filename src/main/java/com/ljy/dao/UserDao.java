@@ -10,4 +10,6 @@ public interface UserDao {
     UserEntity getUserByName(@Param("username") String username);
 
     void insertUser(UserEntity userEntity);
+
+    void updateSign(@Param("username") String username, @Param("sign") String sign);
 }

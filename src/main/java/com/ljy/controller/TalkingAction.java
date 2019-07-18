@@ -43,7 +43,7 @@ public class TalkingAction extends BaseAction{
 
     @RequestMapping(value = "getUserInfo.do")
     @ResponseBody String getUserInfo(HttpServletRequest request){
-        String username = getParm(request, "username");
+        String username = getParm(request, "username"); int a = 0; a =+2;
         UserEntity user = talkingService.getUserInfo(username);
         return JSON.toJSONString(user);
     }
@@ -73,4 +73,19 @@ public class TalkingAction extends BaseAction{
         List<ChatRecordEntity> list = talkingService.getChatRecordList(50);
         return JSON.toJSONString(list);
     }
+    @RequestMapping(value = "getSign.do")
+    @ResponseBody String getSign(HttpServletRequest request){
+        String username = getSession(request, "username");
+        UserEntity user = talkingService.getUserInfo(username);
+        return JSON.toJSONString(user.getSign());
+    }
+
+    @RequestMapping(value = "updateSign.do")
+    @ResponseBody String updateSign(HttpServletRequest request){
+        String sign = getParm(request, "sign");
+        String username = getSession(request, "username");
+        talkingService.updateSign(username, sign);
+        return JSON.toJSONString("");
+    }
+
 }

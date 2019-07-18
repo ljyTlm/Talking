@@ -138,7 +138,31 @@ function subText(){
     });
 }
 
+/**
+ * 设置签名
+ */
+function setSign(){
+    $.post("../TalkingAction/getSign.do", function (sign) {
+        $("#sign").text(sign);
+    })
+}
+
+/**
+ * 修改签名
+ */
+function updateSign(){
+    var str=prompt("请输入要修改的签名","~~~~~");
+    if(str)
+    {
+        $.post("../TalkingAction/updateSign.do", {sign:str}, function () {
+            alert("修改成功！！");
+            setSign();
+        })
+    }
+}
+
 $(function () {
     getUserOnline();
     refreshTalking();
+    setSign();
 });

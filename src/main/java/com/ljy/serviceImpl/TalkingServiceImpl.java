@@ -44,4 +44,9 @@ public class TalkingServiceImpl implements TalkingService {
     public List<ChatRecordEntity> getChatRecordList(int num) {
         return chatRecordDao.getChatRecordList(num);
     }
+
+    @Override
+    public void updateSign(String username, String sign) {
+        userDao.updateSign(username, sign);
+    }
 }
